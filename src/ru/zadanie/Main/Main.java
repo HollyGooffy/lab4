@@ -109,7 +109,6 @@ public class Main {
         System.out.println("Длина строк: " + integerList);
 
 
-
         //Положительные числа
         List<Integer> num = List.of(1, -3, 7);
         List<Integer> posNum = Transform.transform(num, new Apply<Integer, Integer>() {
@@ -121,33 +120,36 @@ public class Main {
         System.out.println("Положительные числа: " + posNum);
 
 
-        //Поиск максимального в списке
+        //Поиск максимального значения в каждом подсписке
         List<int[]> arrays = List.of(new int[]{1, 2, 3}, new int[]{4, 5, 6}, new int[]{7, 8, 9});
         List<Integer> maxValue = Transform.transform(arrays, new Apply<int[], Integer>() {
             @Override
             public Integer apply(int[] array) {
-                return 0;
+                int max = array[0];
+                for (int num : array) {
+                    if (num > max) {
+                        max = num;
+                    }
+                }
+                return max;
             }
         });
-        for (int i = 0; i < arrays.size(); i++) {
-            int[] array = arrays.get(i);
-            int max = array[0];
-            for (int j = 0; j < array.length; j++) {
-                max = array[j];
-            }
-            maxValue.add(max);
-        }
 
-        //Вывод списка
+        // Вывод исходного списка массивов
         System.out.print("Значения из массива: ");
-        for (int k = 0; k < arrays.size(); k++) {
-            int[] array = arrays.get(k);
-            for (int l = 0; l < array.length; l++) {
-                System.out.print(array[l] + " ");
+        for (int[] array : arrays) {
+            System.out.print("[");
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i]);
+                if (i < array.length - 1) {
+                    System.out.print(", ");
+                }
             }
-            System.out.print(" ");
+            System.out.print("] ");
         }
         System.out.println();
+
+        // Вывод результата поиска максимального значения в каждом подсписке
         System.out.println("Максимальное значение из каждого массива: " + maxValue);
 
 

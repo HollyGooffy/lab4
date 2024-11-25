@@ -1,5 +1,4 @@
 package ru.zadanie.third_3;
-
 import java.util.List;
 
 public class Reduce {
