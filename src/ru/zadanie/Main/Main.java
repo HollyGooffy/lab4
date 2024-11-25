@@ -4,6 +4,8 @@ import ru.zadanie.first.Box;
 import ru.zadanie.second.DoPointInBox;
 import ru.zadanie.second.PointBox;
 import ru.zadanie.first.Storage;
+import ru.zadanie.third_1.Apply;
+import ru.zadanie.third_1.Transform;
 import ru.zadanie.third_2.FIlterInt;
 import ru.zadanie.third_2.Filter;
 import ru.zadanie.third_3.Reduce;
@@ -64,7 +66,7 @@ public class Main {
             PointBox<Double> point = pointBox.get();
             System.out.println(point);
         } else {
-            System.out.println("ru.zadanie.first.Box is empty");
+            System.out.println("Box is empty");
         }
 
 
@@ -76,7 +78,7 @@ public class Main {
             PointBox<Integer> point = integerBox.get();
             System.out.println(point);
         } else {
-            System.out.println("ru.zadanie.first.Box is empty");
+            System.out.println("Box is empty");
         }
 
 
@@ -96,27 +98,37 @@ public class Main {
 
         // Длина строк в списке
         System.out.println("Задание 3.1");
-        List<String> stringList = List.of("qwerty", "asdfg", "zx");
-        List<Integer> integerList = new ArrayList<>();
 
-        for (int i = 0; i < stringList.size(); i++) {
-            integerList.add(stringList.get(i).length());
-        }
+        List<String> stringList = List.of("qwerty", "asdfg", "zx");
+        List<Integer> integerList = Transform.transform(stringList, new Apply<String, Integer>() {
+            @Override
+            public Integer apply(String s) {
+                return s.length();
+            }
+        });
         System.out.println("Длина строк: " + integerList);
+
 
 
         //Положительные числа
         List<Integer> num = List.of(1, -3, 7);
-        List<Integer> posNum = new ArrayList<>();
-        for (int i = 0; i < num.size(); i++) {
-            posNum.add(Math.abs(num.get(i)));
-        }
+        List<Integer> posNum = Transform.transform(num, new Apply<Integer, Integer>() {
+            @Override
+            public Integer apply(Integer n) {
+                return Math.abs(n);
+            }
+        });
         System.out.println("Положительные числа: " + posNum);
 
 
         //Поиск максимального в списке
         List<int[]> arrays = List.of(new int[]{1, 2, 3}, new int[]{4, 5, 6}, new int[]{7, 8, 9});
-        List<Integer> maxValue = new ArrayList<>();
+        List<Integer> maxValue = Transform.transform(arrays, new Apply<int[], Integer>() {
+            @Override
+            public Integer apply(int[] array) {
+                return 0;
+            }
+        });
         for (int i = 0; i < arrays.size(); i++) {
             int[] array = arrays.get(i);
             int max = array[0];
