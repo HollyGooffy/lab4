@@ -69,7 +69,7 @@ public class Main {
             System.out.println("Box is empty");
         }
 
-
+        // параметризации должны быть n мерной точки
         // Вторая параметризация
         Box<PointBox<Integer>> integerBox = new Box<>();
         DoPointInBox.putInBox(integerBox, 1, 2, 3);
