@@ -1,9 +1,12 @@
 package ru.zadanie.second;
 
-public class PointBox<T> {
+
+// делать n мерные точки
+public class PointBox<T> { // extends
     private T x;
     private T y;
     private T z;
+    // 1 элемент в поле как в 3dpoint
 
     public PointBox(T x, T y, T z) {
         this.x = x;
@@ -24,7 +27,7 @@ public class PointBox<T> {
     }
 
     @Override
-    public String toString() {
+    public String toString()  {
         return "{" + getX() + ";" + getY() + ";" + z + "}";
     }
 
