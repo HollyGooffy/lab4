@@ -28,7 +28,7 @@ public class Main {
 
         // Извлекаем значение из коробки и выводим его на экран
         if (intBox.isEmpty()) {
-            System.out.println("ru.zadanie.first.Box is empty");
+            System.out.println("Box is empty");
         } else {
             Integer value = intBox.get();
             System.out.println(value);
